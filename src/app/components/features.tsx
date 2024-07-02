@@ -62,7 +62,6 @@ const FeaturesCarousel: React.FC<CarouselBannerProps> = (props) => {
         {props.items.map((item, index) => (
           <CarouselItem key={index}>
             <Card
-              // dynamic image url doesn;t work in classNames, hence using inline style
               style={{ backgroundImage: `url(${item.url})` }}
               className="w-full h-96 bg-cover"
             >

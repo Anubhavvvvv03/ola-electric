@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { TabData } from '../page';
-import { ImGit } from 'react-icons/im';
+import Image from 'next/image';
 
 interface TabProps {
-  tabs:TabData[];
+  tabs: TabData[];
 }
 
 const FunctionTabs: React.FC<TabProps> = ({ tabs }) => {
@@ -26,12 +26,25 @@ const FunctionTabs: React.FC<TabProps> = ({ tabs }) => {
         ))}
       </div>
       <div className="p-4">
-     
-       <div className="grid grid-cols-3 gap-5">
-       {tabs[activeTab].imageUrls.map((url, i) => (
-            <img key={i} src={url} alt={`${tabs[activeTab].title} ${i}`} className="w-full h-auto" />
+        <div className="grid grid-cols-1 gap-5">
+          {tabs.map((tab, tabIndex) => (
+            <div key={tabIndex} className="grid grid-cols-3 gap-5">
+              <h3 className="text-4xl font-semibold mb-4">{tab.title}</h3>
+              {tab.imageUrls.map((url, i) => (
+                <div key={`${tabIndex}-${i}`} className="relative">
+                  <Image
+                    width={300}
+                    height={300}
+                    src={url}
+                    alt={`${tab.title} ${i}`}
+                    className="w-full h-auto"
+                  />
+                  
+                </div>
+              ))}
+            </div>
           ))}
-       </div>
+        </div>
       </div>
     </div>
   );
